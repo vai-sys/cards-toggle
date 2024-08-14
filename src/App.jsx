@@ -6,10 +6,10 @@ import React, { useState } from 'react';
 import BookCard from './components/BookCard';
 
 const App = () => {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
   const books = [
@@ -74,13 +74,21 @@ const App = () => {
           ))}
         </div>
         <button
-          onClick={toggleTheme}
-          className={`text-${theme === 'dark' ? 'white' : 'white'} hover:text-${
-            theme === 'dark' ? 'gray-500' : 'gray-900'
-          } transition-colors text-sm absolute top-2 right-2 pr-4 pl-4 pt-2 pb-3 bg-${theme==='dark' ?'slate-800' :'purple-950'} `}
-        >
-          {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
-        </button>
+  onClick={toggleTheme}
+  className={[
+    'text-sm',
+    'absolute',
+    'top-2',
+    'right-2',
+    'pr-4',
+    'pl-4',
+    'pt-2',
+    'pb-3',
+    theme === 'dark' ? 'bg-slate-800 text-white hover:text-gray-500' : 'bg-purple-950 text-white hover:text-gray-900',
+  ].join(' ')}
+>
+  {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+</button>
       </div>
     </div>
   );
