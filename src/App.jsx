@@ -1,7 +1,3 @@
-
-
-
-
 import React, { useState } from 'react';
 import BookCard from './components/BookCard';
 
@@ -53,7 +49,21 @@ const App = () => {
           ></div>
         ))}
       </div>
-      <div className="max-w-6xl mx-auto relative z-10 mt-20 text-center">
+      <button
+        onClick={toggleTheme}
+        className={[
+          'fixed',
+          'top-4',
+          'right-4',
+          'px-4',
+          'py-2',
+          'rounded',
+          theme === 'dark' ? 'bg-slate-800 text-white hover:text-gray-500' : 'bg-purple-950 text-white hover:text-gray-900',
+        ].join(' ')}
+      >
+        {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+      </button>
+      <div className="max-w-6xl mx-auto relative z-10 mt-20 text-center md:p-12 lg:p-20">
         <h1
           className={`text-2xl font-bold ${
             theme === 'dark' ? 'text-white-300' : 'text-white'
@@ -73,22 +83,6 @@ const App = () => {
             <BookCard key={index} {...book} theme={theme} />
           ))}
         </div>
-        <button
-  onClick={toggleTheme}
-  className={[
-    'text-sm',
-    'absolute',
-    'top-2',
-    'right-2',
-    'pr-4',
-    'pl-4',
-    'pt-2',
-    'pb-3',
-    theme === 'dark' ? 'bg-slate-800 text-white hover:text-gray-500' : 'bg-purple-950 text-white hover:text-gray-900',
-  ].join(' ')}
->
-  {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
-</button>
       </div>
     </div>
   );
